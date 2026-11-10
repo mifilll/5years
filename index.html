@@ -34,7 +34,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 .tk{stroke:rgba(207,174,114,.17);stroke-width:1.5;stroke-linecap:round;opacity:0;animation:tickIn .6s var(--ease) forwards;animation-delay:calc(var(--i)*16ms + .2s);transition:stroke .6s}
 .tk.major{stroke-width:2.6}.tk.on{stroke:var(--gold)}.tk.now{stroke:var(--hi);filter:drop-shadow(0 0 7px rgba(243,226,186,.95))}
 .orbit{fill:none;stroke:rgba(207,174,114,.22);stroke-dasharray:2 9;transform-box:fill-box;transform-origin:center;animation:spin 90s linear infinite}
-.anniversary-number{position:relative;font:300 calc(var(--dial)*.72)/.8 var(--serif);color:transparent;background:linear-gradient(115deg,#7d6236 10%,#f8e9c6 32%,#cfae72 50%,#f8e9c6 68%,#7d6236 90%) 0 0/260% 100%;-webkit-background-clip:text;background-clip:text;padding-right:.04em;filter:drop-shadow(0 10px 40px rgba(207,174,114,.2));animation:sheen 8s ease-in-out infinite,vIn 1.7s var(--ease) .5s both}
+.anniversary-number{position:relative;font:300 calc(var(--dial)*.72)/.8 var(--serif);color:transparent;background:linear-gradient(115deg,#7d6236 10%,#f8e9c6 32%,#cfae72 50%,#f8e9c6 68%,#7d6236 90%) 0 0/260% 100%;-webkit-background-clip:text;background-clip:text;padding-right:.04em;-webkit-text-fill-color:transparent;animation:sheen 8s ease-in-out infinite,vIn 1.2s var(--ease) .5s backwards}
 .countdown{display:flex;gap:clamp(8px,2vw,16px);margin-top:clamp(22px,4vh,38px)}
 .unit{min-width:clamp(66px,9.5vw,100px);padding:15px 8px 13px;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,rgba(207,174,114,.09),rgba(207,174,114,.015));backdrop-filter:blur(8px);animation:fadeUp .9s var(--ease) both;animation-delay:calc(1s + var(--k)*.1s)}
 .value{display:block;color:var(--hi);font:400 clamp(30px,5vw,52px)/1 var(--serif);font-variant-numeric:tabular-nums}
@@ -203,10 +203,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 .cart-empty{padding:50px 10px;text-align:center;color:var(--mute);font:italic 20px/1.4 var(--serif)}
 .cart-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 22px;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
 @keyframes drop{from{opacity:0;transform:translateY(-16px)}}
-@keyframes viewIn{from{opacity:0;transform:translateY(20px) scale(.985);filter:blur(6px)}}
+@keyframes viewIn{from{opacity:0;transform:translateY(20px)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}}
 @keyframes tickIn{from{opacity:0}to{opacity:1}}
-@keyframes vIn{from{opacity:0;transform:scale(.88) translateY(14px);filter:blur(14px)}}
+@keyframes vIn{from{opacity:0;transform:translateY(16px)}}
 @keyframes sheen{0%,100%{background-position:100% 0}50%{background-position:0 0}}
 @keyframes breathe{0%,100%{opacity:.55;transform:scale(.94)}50%{opacity:1;transform:scale(1.04)}}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -382,14 +382,14 @@ html,body{touch-action:pan-x pan-y}
           't.saved':'Вишлист сохранён','t.saveerr':'Не удалось сохранить — проверь связь или размер фото','t.img':'Выбери файл изображения','t.imgload':'Не удалось загрузить фото','t.badimg':'Некорректная ссылка на фото','t.badlink':'Некорректная ссылка на товар','t.confirm':'Удалить «{n}» из вишлиста?','t.syncerr':'Нет связи — изменения не отправлены',
           'm.title':'Меню','m.sel':'выбрано','m.add':'Добавить своё…','m.dup':'Такой вариант уже есть','m.cart':'Корзина','m.open':'Открыть корзину','m.empty':'В корзине пока пусто. Выбирай блюда в меню.','m.clear':'Очистить','m.confirm':'Очистить всю корзину?','m.note':'Корзина сохраняется сама и видна вам обоим','m.total':'Всего: {n}','m.rm':'Убрать',
           'c.salads':'Салаты','c.appetizers':'Закуски','c.main-courses':'Горячее','c.snacks':'Снеки и сладости','c.drinks':'Напитки','c.desserts':'Десерты','c.fruits':'Фрукты и ягоды','s.drinks-soda':'Газировки','s.drinks-juices':'Соки','s.drinks-homemade':'Домашние напитки','s.drinks-other':'Другие напитки',
-          'a.t':'С годовщиной','a.s':'Войди, чтобы видеть и менять своё','a.mine':'Он','a.her':'Она','a.pw':'Пароль','a.go':'Войти','a.err':'Неверный пароль или нет связи','a.out':'Выйти','w.budget':'Бюджет подарков','w.nobudget':'не задан','f.price':'Цена','b.in':'В бюджете','b.near':'Чуть выше бюджета','b.over':'Выше бюджета'},
+          'a.t':'С годовщиной','a.s':'Войди, чтобы видеть и менять своё','a.mine':'Он','a.her':'Она','a.pw':'Пароль','a.go':'Войти','a.err':'Неверный пароль или нет связи','a.out':'Выйти','w.budget':'Бюджет на подарок','w.budget.you':'Твой бюджет на подарок','w.budget.for':'Бюджет на твой подарок','w.nobudget':'не задан','f.price':'Цена','b.in':'В бюджете','b.near':'Чуть выше бюджета','b.over':'Выше бюджета'},
         en: {'tab.wish':'Wishlist','tab.cd':'Countdown','tab.menu':'Menu','cd.d':'days','cd.h':'hours','cd.m':'minutes','cd.s':'seconds','cd.until':'until our fifth anniversary','cd.date':'21 December 2026',
           'w.title':'Wishlist','w.mine':'His Wishlist','w.her':'Her Wishlist','w.unsaved':' · unsaved changes','w.add':'＋ Add a wish','w.tile':'Add a wish','w.save':'Save wishlist','w.empty':'No wishes yet. Add the first one.','w.emptyro':'Nothing here yet.','w.ro':'View only','w.edit':'Edit','w.del':'Delete','w.link':'Open link ↗','w.nolink':'No link','w.one':'wish','w.few':'wishes','w.many':'wishes',
           'p.High':'High','p.Medium':'Medium','p.Low':'Low','f.new':'Add a wish','f.edit':'Edit wish','f.name':'Wish name','f.nameph':'Enter a name…','f.prio':'Priority','f.hi':'High · most wanted','f.photo':'Photo link','f.link':'Item link','f.up':'Or upload a photo','f.cancel':'Cancel','f.savec':'Save changes','f.addb':'Add to list',
           't.saved':'Wishlist saved','t.saveerr':'Could not save — check connection or photo size','t.img':'Choose an image file','t.imgload':'Could not load this photo','t.badimg':'Enter a valid photo URL','t.badlink':'Enter a valid item link','t.confirm':'Delete “{n}” from this wishlist?','t.syncerr':'Offline — changes not sent',
           'm.title':'Menu','m.sel':'selected','m.add':'Add your own option…','m.dup':'This option is already in the list','m.cart':'Cart','m.open':'View cart','m.empty':'Your cart is empty. Pick something from the menu.','m.clear':'Clear','m.confirm':'Clear the whole cart?','m.note':'The cart saves itself and syncs for both of you','m.total':'Total: {n}','m.rm':'Remove',
           'c.salads':'Salads','c.appetizers':'Appetizers','c.main-courses':'Main Courses','c.snacks':'Snacks & Treats','c.drinks':'Drinks','c.desserts':'Desserts','c.fruits':'Fruits & Berries','s.drinks-soda':'Soft Drinks','s.drinks-juices':'Juices','s.drinks-homemade':'Homemade Drinks','s.drinks-other':'Other Drinks',
-          'a.t':'Happy anniversary','a.s':'Sign in to see and edit your own list','a.mine':'Him','a.her':'Her','a.pw':'Password','a.go':'Sign in','a.err':'Wrong password or no connection','a.out':'Sign out','w.budget':'Gift budget','w.nobudget':'not set','f.price':'Price','b.in':'Within budget','b.near':'Slightly over budget','b.over':'Over budget'}
+          'a.t':'Happy anniversary','a.s':'Sign in to see and edit your own list','a.mine':'Him','a.her':'Her','a.pw':'Password','a.go':'Sign in','a.err':'Wrong password or no connection','a.out':'Sign out','w.budget':'Gift budget','w.budget.you':'Your gift budget','w.budget.for':'Budget for your gift','w.nobudget':'not set','f.price':'Price','b.in':'Within budget','b.near':'Slightly over budget','b.over':'Over budget'}
       };
       let lang = localStorage.getItem('ann-lang') || 'ru';
       window.t = (k, v) => { let r = D[lang][k] ?? D.en[k] ?? k; if (v) for (const x in v) r = r.replace('{' + x + '}', v[x]); return r; };
@@ -426,6 +426,7 @@ html,body{touch-action:pan-x pan-y}
       };
       const seen = {};
       Sync.put = async (path, val) => { await db(path, 'PUT', val); if (val && val.ts) seen[path] = val.ts; };
+      Sync.patch = async (path, val) => { await db(path, 'PATCH', val); if (val && val.ts) seen[path] = val.ts; };
       const paths = () => ['data/mine', 'data/her', 'menu'];
       async function poll() {
         if (document.hidden) return;
@@ -790,15 +791,19 @@ html,body{touch-action:pan-x pan-y}
           </form></div>`;
       }
       const fmt = (n) => n.toLocaleString(document.documentElement.lang === 'ru' ? 'ru-RU' : 'en-US', { maximumFractionDigits: 2 }) + '\u00a0' + cur;
+      const otherOf = (o) => (o === 'mine' ? 'her' : 'mine');
+      let budgetTimer = null;
+      const softRender = () => { if (!formOpen && !(document.activeElement && document.activeElement.matches && document.activeElement.matches('[data-budget]'))) render(); };
       const budgetStatus = (p, b) => (!p || !b ? null : p <= b ? 'in' : p <= b * 1.2 ? 'near' : 'over');
       function priceBlock(it) {
         if (!it.price) return '';
-        const b = draft.budgets[activeOwner], st = budgetStatus(it.price, b), w = b ? Math.min(100, it.price / (b * 1.4) * 100) : 0;
+        const b = draft.budgets[otherOf(activeOwner)], st = budgetStatus(it.price, b), w = b ? Math.min(100, it.price / (b * 1.4) * 100) : 0;
         return `<div class="wish-price"><span class="wish-amount">${fmt(it.price)}</span>${st ? `<span class="wish-status ${st}">${t('b.' + st)}</span>` : ''}</div>${st ? `<div class="gauge ${st}" style="--w:${w.toFixed(1)}%" aria-hidden="true"><i></i><b></b></div>` : ''}`;
       }
       function budgetBar() {
-        const b = draft.budgets[activeOwner];
-        return `<div class="budget"><div class="budget-main"><span class="budget-label">${t('w.budget')}</span>${canEdit() ? `<label class="budget-input"><input type="text" inputmode="decimal" data-budget value="${b || ''}" placeholder="0" aria-label="${t('w.budget')}"><em>${cur}</em></label>` : `<strong class="budget-val">${b ? fmt(b) : t('w.nobudget')}</strong>`}</div>
+        const bo = otherOf(activeOwner), b = draft.budgets[bo], edit = !sy().on || sy().role === bo;
+        const label = !sy().on ? t('w.budget') : edit ? t('w.budget.you') : t('w.budget.for');
+        return `<div class="budget"><div class="budget-main"><span class="budget-label">${label}</span>${edit ? `<label class="budget-input"><input type="text" inputmode="decimal" data-budget value="${b || ''}" placeholder="0" aria-label="${label}"><em>${cur}</em></label>` : `<strong class="budget-val">${b ? fmt(b) : t('w.nobudget')}</strong>`}</div>
           <div class="budget-legend"><span class="lg in">${t('b.in')}</span><span class="lg near">${t('b.near')} · +20%</span></div></div>`;
       }
       function renderRows() {
@@ -870,10 +875,12 @@ html,body{touch-action:pan-x pan-y}
         dirty = true; formOpen = false; editingId = null; pendingImage = ''; render();
       });
       root.addEventListener('input', (e) => {
-        if (!e.target.matches('[data-budget]') || !canEdit()) return;
-        draft.budgets[activeOwner] = Math.max(0, parseFloat(String(e.target.value).replace(',', '.')) || 0); dirty = true;
+        if (!e.target.matches('[data-budget]')) return;
+        const bo = otherOf(activeOwner); if (sy().on && sy().role !== bo) return;
+        draft.budgets[bo] = Math.max(0, parseFloat(String(e.target.value).replace(',', '.')) || 0);
+        try { localStorage.setItem(storageKey, JSON.stringify(draft)); } catch (_) {}
         const r = root.querySelector('.wish-rows'); if (r) r.innerHTML = renderRows();
-        const m = root.querySelector('.wish-panel-meta'); if (m && !m.dataset.u) { m.dataset.u = 1; m.insertAdjacentText('beforeend', t('w.unsaved')); }
+        if (sy().on) { clearTimeout(budgetTimer); budgetTimer = setTimeout(() => sy().patch('data/' + bo, { budget: draft.budgets[bo], ts: Date.now() }).catch(() => toast(t('t.syncerr'))), 700); }
       });
       addEventListener('langchange', render);
       addEventListener('sync:ready', () => { if (sy().on && sy().role) { activeOwner = shownOwner = sy().role; } render(); });
@@ -893,13 +900,13 @@ html,body{touch-action:pan-x pan-y}
           }
           // Preserve any cached list for the other person until that person
           // signs in and can safely migrate it under their own account.
-          if (!formOpen) render();
+          softRender();
           return;
         }
 
         draft[k] = validItems(e.detail.val.items); draft.budgets[k] = Math.max(0, Number(e.detail.val.budget) || 0);
         try { localStorage.setItem(storageKey, JSON.stringify(draft)); } catch (_) {}
-        if (!formOpen) render();
+        softRender();
       });
       render();
     })();
